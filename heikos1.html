@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>AJAX</title>
+    <script type="text/javascript"><!--
+    var http = null;
+    if (window.XMLHttpRequest) {
+        http = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        http = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    if (http != null) {
+        http.open("GET", "datei.html", true);
+        http.onreadystatechange = ausgeben;
+        http.send(null);
+    }
+
+    function ausgeben() {
+        if (http.readyState == 4) {
+            document.getElementById("Ausgabe").innerHTML =
+                    http.responseText;
+        }
+    }
+    //--></script>
+</head>
+<body>
+HTML vom Server:
+<div id="Ausgabe"></div>
+</body>
+</html>
